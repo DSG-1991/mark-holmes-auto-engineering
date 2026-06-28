@@ -85,6 +85,12 @@
     <div class="chat-widget" id="chatWidget">
       <div class="chat-panel" id="chatPanel">
         <div class="chat-header">
+          <button class="chat-close" id="chatClose" aria-label="Close chat">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
           <div class="chat-header-avatar">MH</div>
           <div class="chat-header-info">
             <h4>Mark Holmes Auto</h4>
@@ -138,6 +144,7 @@
 
     const widget = document.getElementById('chatWidget');
     const toggle = document.getElementById('chatToggle');
+    const closeBtn = document.getElementById('chatClose');
     const panel = document.getElementById('chatPanel');
     const messages = document.getElementById('chatMessages');
     const input = document.getElementById('chatInput');
@@ -284,6 +291,10 @@
         openPanel();
       }
     });
+
+    // Close button in the panel header (only way to close on mobile, where the
+    // floating toggle is hidden while the panel is full-screen)
+    closeBtn.addEventListener('click', closePanel);
 
     // Send message
     function sendMessage(text) {

@@ -1505,6 +1505,31 @@ ul {
   gap: var(--spacing-sm);
 }
 
+.chat-close {
+  background: transparent;
+  border: none;
+  color: var(--white);
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  opacity: 0.85;
+  transition: opacity var(--transition), background var(--transition);
+  flex-shrink: 0;
+}
+
+.chat-close:hover {
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.chat-close svg {
+  width: 20px;
+  height: 20px;
+}
+
 .chat-header-avatar {
   width: 36px;
   height: 36px;
