@@ -219,7 +219,12 @@
         }
       }
 
-      input.focus();
+      // On mobile, don't auto-open the keyboard — let the user see the header,
+      // welcome message and quick replies first. The keyboard (and the
+      // visual-viewport resize) only kicks in once they tap the input.
+      if (!isMobile()) {
+        input.focus();
+      }
       scrollToBottom();
     }
 

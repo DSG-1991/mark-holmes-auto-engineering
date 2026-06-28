@@ -47,15 +47,17 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
+# JS/CSS are referenced by unversioned paths (/css/style.css, /js/chat.js) with a
+# ?v= cache-busting query, so they must revalidate rather than be frozen immutable.
 [[headers]]
   for = "/*.css"
   [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
+    Cache-Control = "public, max-age=0, must-revalidate"
 
 [[headers]]
   for = "/*.js"
   [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
+    Cache-Control = "public, max-age=0, must-revalidate"
 
 # Functions configuration
 [functions]
