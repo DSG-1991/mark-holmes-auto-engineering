@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/css/style.css?v=3">
+  <link rel="stylesheet" href="/css/style.css?v=4">
   <link rel="icon" type="image/png" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%23018aee'/%3E%3Ctext x='16' y='22' font-size='18' font-weight='bold' fill='white' text-anchor='middle' font-family='Inter,sans-serif'%3EMH%3C/text%3E%3C/svg%3E">
 
   <!-- ===== SEO: canonical, social & structured data ===== -->
@@ -96,7 +96,21 @@
         { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Tyres & 4-Wheel Alignment" } },
         { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Exhaust Repairs" } }
       ]
-    }
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "reviewCount": "36",
+      "bestRating": "5",
+      "worstRating": "1"
+    },
+    "review": [
+      { "@type": "Review", "author": { "@type": "Person", "name": "Susan B." }, "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "reviewBody": "Highly recommended. Excellent service, nothing too much trouble. We have used this garage for 20+ years." },
+      { "@type": "Review", "author": { "@type": "Person", "name": "Andrew M." }, "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "reviewBody": "Called into Mark Holmes Fleetwood, booked in promptly, diagnosed and fixed. Extremely professional — our go-to for service, repairs and MOT from now on. Highly recommend." },
+      { "@type": "Review", "author": { "@type": "Person", "name": "Lynsey" }, "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "reviewBody": "Would highly recommend Mark Holmes garage. Fast, efficient and reliable. Very good communication. 10/10" },
+      { "@type": "Review", "author": { "@type": "Person", "name": "Janice R." }, "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "reviewBody": "Took it in for a knocking noise that two other garages couldn't find. Over the moon they found it and fixed it. Very reasonably priced. Defo recommend." },
+      { "@type": "Review", "author": { "@type": "Person", "name": "Stuart Y." }, "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "reviewBody": "Great service, great guys, fast and reliable. Best garage in Fleetwood by far." }
+    ]
   }
   </script>
   <script type="application/ld+json">
@@ -166,6 +180,144 @@
         <div class="hero-logo-card">
           <img src="/images/MARK%20HOLMES%20LOGO.png" alt="Mark Holmes Auto Engineering Logo">
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== REVIEWS CAROUSEL ===== -->
+  <section class="section reviews-section">
+    <div class="container text-center">
+      <h2 class="section-title fade-in">What Our Customers Say</h2>
+      <p class="section-subtitle fade-in">Rated <strong>4.8/5</strong> from 36+ reviews by drivers across Fleetwood and the Fylde coast.</p>
+    </div>
+    <div class="container reviews-carousel" id="reviewsCarousel">
+      <div class="reviews-track" id="reviewsTrack">
+
+        <article class="review-card">
+          <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <p class="review-text">First time I've used Mark Holmes Auto Engineering. Came highly recommended by a friend. I booked online at a time that suited me, dropped my car off at 8am and got a text when it was ready. MOT and a full service — happy with the price.</p>
+          <div class="review-meta"><span class="review-author">Bill</span><span class="review-source">Audi Q8 · via BookMyGarage</span></div>
+        </article>
+
+        <article class="review-card">
+          <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <p class="review-text">Would highly recommend Mark Holmes garage. I've used their services for a couple of years now. Fast, efficient and reliable. Very good communication. 10/10</p>
+          <div class="review-meta"><span class="review-author">Lynsey</span><span class="review-source">SEAT Arona · via BookMyGarage</span></div>
+        </article>
+
+        <article class="review-card">
+          <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <p class="review-text">Great communication about my car. Friendly and speedy service.</p>
+          <div class="review-meta"><span class="review-author">Clair</span><span class="review-source">Ford Fiesta · via BookMyGarage</span></div>
+        </article>
+
+        <article class="review-card">
+          <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <p class="review-text">Highly recommended. Excellent service, nothing too much trouble. We have used this garage for 20+ years.</p>
+          <div class="review-meta"><span class="review-author">Susan B.</span><span class="review-source">via Google</span></div>
+        </article>
+
+        <article class="review-card">
+          <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <p class="review-text">Major dealership was totally inflexible about a fault with my car. Called into Mark Holmes Fleetwood, booked in promptly, diagnosed and fixed. Extremely professional — our go-to for service, repairs and MOT from now on. Highly recommend.</p>
+          <div class="review-meta"><span class="review-author">Andrew M.</span><span class="review-source">via Google</span></div>
+        </article>
+
+        <article class="review-card">
+          <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <p class="review-text">MOT carried out, fast and very professional. Fitted new tyres at a great price. Really good garage and sound advice. Will definitely be using again.</p>
+          <div class="review-meta"><span class="review-author">Rick W.</span><span class="review-source">via Google</span></div>
+        </article>
+
+        <article class="review-card">
+          <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <p class="review-text">Mark came to my house, picked my van up and fixed it in a day — amazing, as it's my work van. Very reasonable price. Would definitely recommend. Thanks guys 👍</p>
+          <div class="review-meta"><span class="review-author">Jason B.</span><span class="review-source">via Google</span></div>
+        </article>
+
+        <article class="review-card">
+          <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <p class="review-text">Took it in for a knocking noise that Kwik Fit and another garage couldn't find. A lot of work on shockers and ball joints, but over the moon they actually found it and fixed it. Very reasonably priced. Defo recommend.</p>
+          <div class="review-meta"><span class="review-author">Janice R.</span><span class="review-source">via Google</span></div>
+        </article>
+
+        <article class="review-card">
+          <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <p class="review-text">Really good garage, excellent value. Needed a service, new battery and brake pads. Job well done, car running great. Thanks.</p>
+          <div class="review-meta"><span class="review-author">B. McC</span><span class="review-source">via Google</span></div>
+        </article>
+
+        <article class="review-card">
+          <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <p class="review-text">If you want quality, expert and thorough hands on your prized possessions, Mark and the team are the only place to go in the North West. Passing through Poulton with a weeping hose, they quickly found the issue and sorted it.</p>
+          <div class="review-meta"><span class="review-author">Rich A.</span><span class="review-source">via Google</span></div>
+        </article>
+
+        <article class="review-card">
+          <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <p class="review-text">Excellent service as always from Mark, very reasonable prices. Would recommend this garage to anyone — and I do! I've been a customer for many years 👍</p>
+          <div class="review-meta"><span class="review-author">Andrea H.</span><span class="review-source">via Google</span></div>
+        </article>
+
+        <article class="review-card">
+          <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <p class="review-text">Excellent service and a pleasant person to deal with. Been servicing my cars for 8 years — no complaints.</p>
+          <div class="review-meta"><span class="review-author">Krysia W.</span><span class="review-source">via Google</span></div>
+        </article>
+
+        <article class="review-card">
+          <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <p class="review-text">Top man, as usual — brilliant fast service. MOT, service and air conditioning recharged. Very reliable.</p>
+          <div class="review-meta"><span class="review-author">Ian B.</span><span class="review-source">via Google</span></div>
+        </article>
+
+        <article class="review-card">
+          <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <p class="review-text">Great service, great guys, fast and reliable 👏 Best garage in Fleetwood by far.</p>
+          <div class="review-meta"><span class="review-author">Stuart Y.</span><span class="review-source">via Google</span></div>
+        </article>
+
+        <article class="review-card">
+          <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <p class="review-text">Really professional and reliable. I've been a customer for a while now and never had a single complaint.</p>
+          <div class="review-meta"><span class="review-author">Chris M.</span><span class="review-source">via Google</span></div>
+        </article>
+
+        <article class="review-card">
+          <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <p class="review-text">Always done a great job for me — MOT, repairs and an oil leak investigation. Great service, thanks to the lads at Mark Holmes.</p>
+          <div class="review-meta"><span class="review-author">Julian W.</span><span class="review-source">via Google</span></div>
+        </article>
+
+        <article class="review-card">
+          <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <p class="review-text">Desperately needed an engine oil top-up and the garage sorted me out nice and quick.</p>
+          <div class="review-meta"><span class="review-author">Zhinlap</span><span class="review-source">via Google</span></div>
+        </article>
+
+        <article class="review-card">
+          <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <p class="review-text">Very experienced on all aspects of car care. Good, reliable service.</p>
+          <div class="review-meta"><span class="review-author">Freda Z.</span><span class="review-source">via Google</span></div>
+        </article>
+
+        <article class="review-card">
+          <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <p class="review-text">First class — couldn't fault the service.</p>
+          <div class="review-meta"><span class="review-author">Michael W.</span><span class="review-source">via Google</span></div>
+        </article>
+
+        <article class="review-card">
+          <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <p class="review-text">Very good workmanship. Would highly recommend this garage.</p>
+          <div class="review-meta"><span class="review-author">Ronnie C.</span><span class="review-source">via Google</span></div>
+        </article>
+
+      </div>
+      <div class="reviews-controls">
+        <button class="reviews-arrow prev" type="button" aria-label="Previous reviews">‹</button>
+        <div class="reviews-dots" id="reviewsDots"></div>
+        <button class="reviews-arrow next" type="button" aria-label="More reviews">›</button>
       </div>
     </div>
   </section>
@@ -326,7 +478,7 @@
     </div>
   </footer>
 
-  <script src="/js/main.js"></script>
+  <script src="/js/main.js?v=4"></script>
   <script src="/js/chat.js?v=3"></script>
 </body>
 </html>

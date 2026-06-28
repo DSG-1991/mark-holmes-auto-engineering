@@ -203,4 +203,81 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
+  // --- Reviews Carousel ---
+  var reviewsCarousel = document.getElementById('reviewsCarousel');
+  if (reviewsCarousel) {
+    var track = document.getElementById('reviewsTrack');
+    var dotsWrap = document.getElementById('reviewsDots');
+    var cards = track.querySelectorAll('.review-card');
+    var prevBtn = reviewsCarousel.querySelector('.reviews-arrow.prev');
+    var nextBtn = reviewsCarousel.querySelector('.reviews-arrow.next');
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function step() {
+      var card = track.querySelector('.review-card');
+      if (!card) return track.clientWidth;
+      var gap = parseInt(getComputedStyle(track).columnGap || getComputedStyle(track).gap || '0', 10) || 0;
+      return card.offsetWidth + gap;
+    }
+
+    function activeIndex() {
+      return Math.round(track.scrollLeft / step());
+    }
+
+    // Build dots (one per card)
+    var dots = [];
+    cards.forEach(function(_, i) {
+      var dot = document.createElement('button');
+      dot.className = 'reviews-dot';
+      dot.type = 'button';
+      dot.setAttribute('aria-label', 'Go to review ' + (i + 1));
+      dot.addEventListener('click', function() {
+        track.scrollTo({ left: i * step(), behavior: 'smooth' });
+      });
+      dotsWrap.appendChild(dot);
+      dots.push(dot);
+    });
+
+    function updateDots() {
+      var a = activeIndex();
+      dots.forEach(function(d, i) { d.classList.toggle('active', i === a); });
+    }
+    updateDots();
+
+    var scrollRaf;
+    track.addEventListener('scroll', function() {
+      window.cancelAnimationFrame(scrollRaf);
+      scrollRaf = window.requestAnimationFrame(updateDots);
+    });
+
+    prevBtn.addEventListener('click', function() {
+      track.scrollBy({ left: -step(), behavior: 'smooth' });
+    });
+    nextBtn.addEventListener('click', function() {
+      track.scrollBy({ left: step(), behavior: 'smooth' });
+    });
+
+    // Auto-advance (pauses on hover/focus, respects reduced motion)
+    var timer = null;
+    function startAuto() {
+      if (reduceMotion) return;
+      stopAuto();
+      timer = window.setInterval(function() {
+        if (activeIndex() >= cards.length - 1) {
+          track.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+          track.scrollBy({ left: step(), behavior: 'smooth' });
+        }
+      }, 4500);
+    }
+    function stopAuto() {
+      if (timer) { window.clearInterval(timer); timer = null; }
+    }
+    reviewsCarousel.addEventListener('mouseenter', stopAuto);
+    reviewsCarousel.addEventListener('mouseleave', startAuto);
+    reviewsCarousel.addEventListener('focusin', stopAuto);
+    reviewsCarousel.addEventListener('focusout', startAuto);
+    startAuto();
+  }
+
 });
