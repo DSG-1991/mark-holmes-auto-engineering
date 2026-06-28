@@ -146,10 +146,25 @@
     const quickReplies = document.getElementById('chatQuickReplies');
 
     let isOpen = false;
+    let savedScrollY = 0;
+    let vvHandler = null;
 
     // Check if mobile
     function isMobile() {
       return window.innerWidth <= 480;
+    }
+
+    // Keep the full-screen panel sized to the visual viewport so the on-screen
+    // keyboard can't push the header / messages off the top of the screen.
+    function syncMobileViewport() {
+      const vv = window.visualViewport;
+      if (vv) {
+        widget.style.height = vv.height + 'px';
+        widget.style.top = vv.offsetTop + 'px';
+      } else {
+        widget.style.height = window.innerHeight + 'px';
+        widget.style.top = '0';
+      }
     }
 
     // Open panel
@@ -159,15 +174,19 @@
       toggle.classList.add('active');
 
       if (isMobile()) {
-        // On mobile: use inline styles for reliable full-screen positioning
-        // This bypasses CSS cascade issues with nested fixed elements
+        // On mobile: full-screen, sized to the *visual* viewport (keyboard-aware)
+        // and with the page locked behind it so iOS can't scroll the header out
+        // of view when the input is focused.
+        savedScrollY = window.scrollY || window.pageYOffset || 0;
+        document.documentElement.classList.add('chat-open');
+        document.body.style.top = '-' + savedScrollY + 'px';
+
         widget.style.position = 'fixed';
         widget.style.top = '0';
         widget.style.left = '0';
         widget.style.right = '0';
-        widget.style.bottom = '0';
+        widget.style.bottom = 'auto';
         widget.style.width = '100%';
-        widget.style.height = '100%';
         widget.style.zIndex = '10000';
 
         panel.style.position = 'absolute';
@@ -180,9 +199,24 @@
         panel.style.maxHeight = 'none';
         panel.style.borderRadius = '0';
         panel.style.border = 'none';
-        panel.style.overflow = 'visible';
+        panel.style.overflow = 'hidden';
+
+        // Let the message list fill the available space and scroll internally
+        // (it is capped at 320px by default for the floating desktop card).
+        messages.style.maxHeight = 'none';
+        messages.style.flex = '1';
 
         toggle.style.display = 'none';
+
+        syncMobileViewport();
+        if (window.visualViewport) {
+          vvHandler = function() {
+            syncMobileViewport();
+            scrollToBottom();
+          };
+          window.visualViewport.addEventListener('resize', vvHandler);
+          window.visualViewport.addEventListener('scroll', vvHandler);
+        }
       }
 
       input.focus();
@@ -196,6 +230,13 @@
       toggle.classList.remove('active');
 
       if (isMobile()) {
+        // Detach the visual-viewport listeners
+        if (window.visualViewport && vvHandler) {
+          window.visualViewport.removeEventListener('resize', vvHandler);
+          window.visualViewport.removeEventListener('scroll', vvHandler);
+          vvHandler = null;
+        }
+
         // Reset inline styles
         widget.style.position = '';
         widget.style.top = '';
@@ -218,7 +259,15 @@
         panel.style.border = '';
         panel.style.overflow = '';
 
+        messages.style.maxHeight = '';
+        messages.style.flex = '';
+
         toggle.style.display = '';
+
+        // Unlock the page and restore the scroll position
+        document.documentElement.classList.remove('chat-open');
+        document.body.style.top = '';
+        window.scrollTo(0, savedScrollY);
       }
     }
 

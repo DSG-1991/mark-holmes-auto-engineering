@@ -1705,6 +1705,21 @@ ul {
   }
 }
 
+/* Lock the page behind the full-screen mobile chat so the on-screen keyboard
+   can't scroll the chat header/messages out of view (see js/chat.js). The
+   inline body `top: -<scrollY>px` preserves the visual scroll position. */
+html.chat-open,
+html.chat-open body {
+  overflow: hidden;
+}
+
+html.chat-open body {
+  position: fixed;
+  left: 0;
+  right: 0;
+  width: 100%;
+}
+
 /* --- Animations --- */
 .fade-in {
   opacity: 0;
